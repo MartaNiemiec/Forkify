@@ -1,0 +1,14 @@
+{
+  // preset is a collection of code transforms plug-ins, which are like the pieces of code that actually apply the actual transformations to our code
+  "presets": [
+    //env = enviroment
+    ["env", {
+      "targets": {
+        "browsers": [
+          "last 5 versions",
+          "ie >= 8"
+        ]
+      }
+    }]
+  ]
+}

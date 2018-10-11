@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // adjusting an object and export it using node.js syntax
 module.exports = {
   // entry point = is where webpack will start the bundling. We can specify one or more files
-  entry: './src/js/index.js',
+  entry: ["@babel/polyfill", "./src/js/index.js"],
 
   // output property = tells webpack exactly where to save a bundle file
   output: {
@@ -24,5 +24,16 @@ module.exports = {
       filename: 'index.html', // creating file
       template: './src/index.html'  // template file,starting html file
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.js$/,  //regular expression, test will look for all the files and test if thej end in ".js"
+        exclude: /node_modules/,  // exclude everything which is inside node_module folder
+        use: {
+          loader: 'babel-loader'
+        }
+      }
+    ]
+  }
 };
